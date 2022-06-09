@@ -4,6 +4,6 @@
   "version": "1.0.0",
   "manifest_version": 3,
   "background": {
-    "stuffs": "stuff.js"
+    "service_worker": "stuff.js"
   }
 }
