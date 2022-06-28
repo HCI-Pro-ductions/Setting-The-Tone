@@ -5,13 +5,10 @@ button {
   margin: 10px;
   border: none;
   border-radius: 2px;
+  background-color: rgb(150, 170, 255);
 }
 
 button.current {
   box-shadow: 0 0 0 2px white,
               0 0 0 4px black;
-}
-
-button:hover{
-  background-color: black;
 }
