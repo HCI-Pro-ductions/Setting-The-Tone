@@ -1,6 +1,4 @@
-changeColor.addEventListener("click", e=>{
-	changeColor.style.backgroundColor = 'rgb(40, 0, 0)';   
-			  
+function addSarcasm(){
 	for(let i=0;i<(document.querySelectorAll("div._ab8x._ab94._ab99._ab9f._ab9m._ab9o")).length;i++){
 		console.log(document.querySelectorAll("div._ab8x._ab94._ab99._ab9f._ab9m._ab9o")[i].children[2].textContent);
 		console.log(document.querySelectorAll("div._ab8x._ab94._ab99._ab9f._ab9m._ab9o")[i].children[2].innerText.slice(-2));
@@ -21,8 +19,22 @@ changeColor.addEventListener("click", e=>{
 
 	document.querySelector("style").innerHTML+=`
 	indicator{
-	    color:red;
+		color:red;
 	}`
+}
+
+changeColor.addEventListener("click", e=>{
+	changeColor.style.backgroundColor = 'rgb(40, 0, 0)';
+	chrome.tabs.query({active: true, currentWindow: true}).then(resp=>{
+		const tabId = resp[0];
+		console.log(tabId['id']);
+		chrome.scripting.executeScript(
+			{
+			target: {tabId: tabId['id']},
+			func: addSarcasm,
+			},
+			() => {});
+	});
 })
 
 changeColor.addEventListener("mouseenter", e=>{
