@@ -1,5 +1,5 @@
 changeColor.addEventListener("click", e=>{
-	changeColor.style.backgroundColor = black;   
+	changeColor.style.backgroundColor = 'rgb(40, 0, 0)';   
 			  
 	for(let i=0;i<(document.querySelectorAll("div._ab8x._ab94._ab99._ab9f._ab9m._ab9o")).length;i++){
 		console.log(document.querySelectorAll("div._ab8x._ab94._ab99._ab9f._ab9m._ab9o")[i].children[2].textContent);
@@ -23,4 +23,12 @@ changeColor.addEventListener("click", e=>{
 	indicator{
 	    color:red;
 	}`
+})
+
+changeColor.addEventListener("mouseenter", e=>{
+	changeColor.style.backgroundColor = 'rgb(255, 0, 0)';
+})
+
+changeColor.addEventListener("mouseleave", e=>{
+	changeColor.style.backgroundColor = 'rgb(150, 170, 255)';
 })
