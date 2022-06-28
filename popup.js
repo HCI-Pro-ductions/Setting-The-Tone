@@ -1,4 +1,4 @@
-changeColor.addEventListener("click", =>{
+changeColor.addEventListener("click", e=>{
 	changeColor.style.backgroundColor = black;   
 			  
 	for(let i=0;i<(document.querySelectorAll("div._ab8x._ab94._ab99._ab9f._ab9m._ab9o")).length;i++){
@@ -23,4 +23,4 @@ changeColor.addEventListener("click", =>{
 	indicator{
 	    color:red;
 	}`
-}
+})
