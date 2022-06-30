@@ -19,8 +19,8 @@ function toggleSarcasm(){
 	for(let i=0;i<(document.querySelectorAll("div._ab8x._ab94._ab99._ab9f._ab9m._ab9o")).length;i++){
 		console.log(document.querySelectorAll("div._ab8x._ab94._ab99._ab9f._ab9m._ab9o")[i].children[2].textContent);
 		console.log(document.querySelectorAll("div._ab8x._ab94._ab99._ab9f._ab9m._ab9o")[i].children[2].innerText.slice(-2));
-		if(document.querySelectorAll("div._ab8x._ab94._ab99._ab9f._ab9m._ab9o")[i].children[2].innerText.slice(-2)!="/s"){
-			document.querySelectorAll("div._ab8x._ab94._ab99._ab9f._ab9m._ab9o")[i].children[2].innerHTML+="<indicator class='invis'> /s<\indicator>";
+		if(document.querySelectorAll("div._ab8x._ab94._ab99._ab9f._ab9m._ab9o")[i].children[2].innerText.slice(-2)!="/s" && document.querySelectorAll("div._ab8x._ab94._ab99._ab9f._ab9m._ab9o")[i].children[2].innerHTML.slice(-12)!="</indicator>"){
+			document.querySelectorAll("div._ab8x._ab94._ab99._ab9f._ab9m._ab9o")[i].children[2].innerHTML+="<indicator class='invis'> /s</indicator>";
 		}
 		if(postIsSarcastic){ //postIsSarcastic is whatever condition we'll be using
 			document.querySelectorAll("div._ab8x._ab94._ab99._ab9f._ab9m._ab9o")[i].children[2].firstElementChild.classList.toggle('invis');
@@ -29,8 +29,8 @@ function toggleSarcasm(){
 	for(let i=0;i<(document.querySelectorAll("div._a9zs")).length;i++){
 		console.log(document.querySelectorAll("div._a9zs")[i].children[0].textContent);
 		console.log(document.querySelectorAll("div._a9zs")[i].children[0].innerText.slice(-2));
-		if(document.querySelectorAll("div._a9zs")[i].children[0].innerText.slice(-2)!="/s"){
-			document.querySelectorAll("div._a9zs")[i].children[0].innerHTML+="<indicator class='invis'> /s<\indicator>";
+		if(document.querySelectorAll("div._a9zs")[i].children[0].innerText.slice(-2)!="/s" && document.querySelectorAll("div._a9zs")[i].children[0].innerHTML.slice(-12)!="</indicator>"){
+			document.querySelectorAll("div._a9zs")[i].children[0].innerHTML+="<indicator class='invis'> /s</indicator>";
 		}
 		if(postIsSarcastic){ //postIsSarcastic is whatever condition we'll be using
 			document.querySelectorAll("div._a9zs")[i].children[0].firstElementChild.classList.toggle('invis');
