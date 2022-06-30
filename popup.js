@@ -66,7 +66,7 @@ chrome.tabs.query({active: true, currentWindow: true}).then(resp=>{
 	chrome.scripting.executeScript(
 		{
 			target: {tabId: tabId['id']},
-			func: toggleSarcasm,
+			func: addIndicator,
 		},
 		() => {});
 });
