@@ -1,13 +1,15 @@
 // i think this might be better possibly you can take the parts that you think are cool
 
 //hopefully runs when the extension is first pressed or smth
-document.querySelector("style").innerHTML+=`
-	indicator{
-		color:red;
-	}
-	.invis{
-		display:none;
-	}`
+function addIndicator(){
+	document.querySelector("style").innerHTML+=`
+		indicator{
+			color:red;
+		}
+		.invis{
+			display:none;
+		}`
+}
 
 //if we're using my toggle func then we dont need 2 buttons
 function toggleSarcasm(){
@@ -57,3 +59,14 @@ changeColor.addEventListener("mouseenter", e=>{
 changeColor.addEventListener("mouseleave", e=>{
 	changeColor.style.backgroundColor = 'rgb(150, 170, 255)';
 })
+
+chrome.tabs.query({active: true, currentWindow: true}).then(resp=>{
+	const tabId = resp[0];
+	console.log(tabId['id']);
+	chrome.scripting.executeScript(
+		{
+			target: {tabId: tabId['id']},
+			func: toggleSarcasm,
+		},
+		() => {});
+});
