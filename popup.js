@@ -46,7 +46,7 @@ changeColor.addEventListener("click", e=>{
 	changeColor.style.backgroundColor = 'rgb(40, 0, 0)';
 	chrome.tabs.query({active: true, currentWindow: true}).then(resp=>{
 		const tabId = resp[0];
-		console.log(tabId['id']);
+		//console.log(tabId['id']);
 		chrome.scripting.executeScript(
 			{
 				target: {tabId: tabId['id']},
@@ -66,7 +66,7 @@ changeColor.addEventListener("mouseleave", e=>{
 
 chrome.tabs.query({active: true, currentWindow: true}).then(resp=>{
 	const tabId = resp[0];
-	console.log(tabId['id']);
+	//console.log(tabId['id']);
 	chrome.scripting.executeScript(
 		{
 			target: {tabId: tabId['id']},
@@ -74,3 +74,13 @@ chrome.tabs.query({active: true, currentWindow: true}).then(resp=>{
 		},
 		() => {});
 });
+
+sentenceToCheck = "Hello this is a normal statement not meant to be sarcastic."
+
+fetch('http://127.0.0.1/detect?theinput='+sentenceToCheck)
+  .then((response) => {
+    return response.json();
+  })
+  .then((myJson) => {
+    console.log("When I check the sentence I get: " + myJson.result);
+  });
