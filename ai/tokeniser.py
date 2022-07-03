@@ -6,7 +6,7 @@
   
 import json
 
-with open("/tmp/sarcasm.json", 'r') as f:
+with open("ai/datasets/sarcasm.json", 'r') as f:
     datastore = json.load(f)
 
 
