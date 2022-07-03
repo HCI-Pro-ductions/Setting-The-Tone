@@ -12,7 +12,7 @@ padding_type='post'
 oov_tok = "<OOV>"
 training_size = 20000
 
-with open("/tmp/sarcasm.json", 'r') as f:
+with open("ai/datasets/sarcasm.json", 'r') as f:
     datastore = json.load(f)
 
 sentences = []
