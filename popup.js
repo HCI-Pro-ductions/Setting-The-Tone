@@ -11,6 +11,19 @@ function addIndicatorStyles(){
 		}`
 }
 
+function getText(){
+	let arr = Array.from(document.querySelectorAll("div._ab8x._ab94._ab99._ab9f._ab9m._ab9o"));
+	const newArr = arr.map(e=>{
+		return e.children[2].innerText;
+	})
+	let arr2 = Array.from(document.querySelectorAll("div._a9zs"));
+	const newArr2 = arr2.map(e=>{
+		return e.children[0].innerText;
+	})
+	let finalArr = newArr.concat(newArr2)
+	return finalArr;
+}
+
 //if we're using my toggle func then we dont need 2 buttons
 function toggleSarcasm(){
 	//adds /s to post/comment (i think) if not already present, else toggles whether the /s displays for the sarcastic posts/comments
@@ -73,4 +86,22 @@ chrome.tabs.query({active: true, currentWindow: true}).then(resp=>{
 			func: addIndicatorStyles,
 		},
 		() => {});
+
+	chrome.scripting.executeScript(
+		{
+			target: {tabId: tabId['id']},
+			func: getText,
+		},
+			(injectionResults) => {
+			for (const frameResult of injectionResults){
+				console.log('Frame Title: ' + frameResult.result);
+				let detectTheText = frameResult.result;
+				document.querySelector("div").innerHTML="";
+				detectTheText.forEach(e=>{
+					console.log(e);
+					document.querySelector("div").innerHTML+=`
+					<span class="invis">${e}</span>`;
+				})
+			}
+	});
 });
