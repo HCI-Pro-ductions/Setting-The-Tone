@@ -4,30 +4,30 @@ import tensorflow as tf
 from tensorflow.keras.preprocessing.text import Tokenizer
 from tensorflow.keras.preprocessing.sequence import pad_sequences
 
-vocab_size = 10000 #tested with 20000, seem to be more accurate, i'm not so sure
+vocab_size = 20000 #tested with 20000, seem to be more accurate, i'm not so sure
 embedding_dim = 16
 max_length = 100
 trunc_type='post'
 padding_type='post'
 oov_tok = "<OOV>"
 training_size = 20000
+testing_size = 3000
 
-with open("ai/datasets/sarcasm.json", 'r') as f:
+with open("ai/datasets/dataset.json", 'r') as f:
     datastore = json.load(f)
 
 sentences = []
 labels = []
 
 for item in datastore:
-    sentences.append(item['headline'])
+    sentences.append(item['comment'])
     labels.append(item['is_sarcastic'])
 
 
-
 training_sentences = sentences[0:training_size]
-testing_sentences = sentences[training_size:]
+testing_sentences = sentences[training_size:training_size+testing_size]
 training_labels = labels[0:training_size]
-testing_labels = labels[training_size:]
+testing_labels = labels[training_size:training_size+testing_size]
 
 
 
@@ -63,6 +63,8 @@ model.summary()
 
 
 num_epochs = 30
+#graphing and monitoring the training progress, usually not needed unless debugging
+
 history = model.fit(training_padded, training_labels, epochs=num_epochs, validation_data=(testing_padded, testing_labels), verbose=2)
 
 
@@ -79,7 +81,6 @@ def plot_graphs(history, string):
   
 plot_graphs(history, "accuracy")
 plot_graphs(history, "loss")
-
 
 reverse_word_index = dict([(value, key) for (key, value) in word_index.items()])
 
@@ -108,8 +109,7 @@ for word_num in range(1, vocab_size):
 out_v.close()
 out_m.close()
 
-
-sentence = ["granny starting to fear spiders in the garden might be real", "game of thrones season finale showing this sunday night"]
+sentence = ["you should really go kill yourself lmao", "happy birthday"]
 sequences = tokenizer.texts_to_sequences(sentence)
 padded = pad_sequences(sequences, maxlen=max_length, padding=padding_type, truncating=trunc_type)
 print(model.predict(padded))

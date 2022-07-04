@@ -37,7 +37,7 @@ sequences = tokenizer.texts_to_sequences(sentence)
 padded = pad_sequences(sequences, maxlen=max_length, padding=padding_type, truncating=trunc_type)
 answer = model.predict(padded)
 print("Value = ", answer)
-if answer > 0.8:
+if answer > 0.1:
     print("Hence, it is sarastic /s")
 else:
     print("Hence, it is *not* sarastic, no /s")
