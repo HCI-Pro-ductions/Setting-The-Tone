@@ -1,24 +1,7 @@
 import json
 import tensorflow as tf
 
-from tensorflow.keras.preprocessing.text import Tokenizer
 from tensorflow.keras.preprocessing.sequence import pad_sequences
-
-'''
-vocab_size = 10000
-embedding_dim = 16
-max_length = 100
-trunc_type='post'
-padding_type='post'
-oov_tok = "<OOV>"
-training_size = 20000
-
-import numpy as np
-training_padded = np.array(training_padded)
-training_labels = np.array(training_labels)
-testing_padded = np.array(testing_padded)
-testing_labels = np.array(testing_labels)
-'''
 
 max_length = 100
 trunc_type='post'
