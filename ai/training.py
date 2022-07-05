@@ -4,7 +4,7 @@ import tensorflow as tf
 from tensorflow.keras.preprocessing.text import Tokenizer
 from tensorflow.keras.preprocessing.sequence import pad_sequences
 
-vocab_size = 20000 #tested with 20000, seem to be more accurate, i'm not so sure
+vocab_size = 20000
 embedding_dim = 16
 max_length = 100
 trunc_type='post'
