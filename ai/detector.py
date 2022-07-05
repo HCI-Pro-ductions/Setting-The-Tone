@@ -14,12 +14,16 @@ import pickle
 with open('ai/saved_training/tokenizer.pickle', 'rb') as handle:
     tokenizer = pickle.load(handle)
 
-input = input("Key in sentence>")
-sentence = [input]
+#read in the sentences
+import sys
+sentence = []
+for i in range(1, len(sys.argv)):
+    sentence.append(sys.argv[i])
+
 sequences = tokenizer.texts_to_sequences(sentence)
 padded = pad_sequences(sequences, maxlen=max_length, padding=padding_type, truncating=trunc_type)
 answer = model.predict(padded)
-print("Value = ", answer)
+print("Value=", answer)
 if answer > 0.1:
     print("Hence, it is sarastic /s")
 else:
