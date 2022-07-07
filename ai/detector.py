@@ -10,6 +10,7 @@ oov_tok = "<OOV>"
 vocab_size = 10000
 
 model = tf.keras.models.load_model('ai/saved_training/model')
+print(model.summary())
 import pickle
 with open('ai/saved_training/tokenizer.pickle', 'rb') as handle:
     tokenizer = pickle.load(handle)
@@ -24,7 +25,7 @@ sequences = tokenizer.texts_to_sequences(sentence)
 padded = pad_sequences(sequences, maxlen=max_length, padding=padding_type, truncating=trunc_type)
 answer = model.predict(padded)
 #print("Value=", answer)
-if answer > 0.1:
-    print("It is sarastic, /s", "(Value: ", answer, ")")
+if answer > 0.2:
+    print("It is sarcastic, /s", "(Value: ", answer, ")")
 else:
-    print("It is *not* sarastic, no /s", "(Value: ", answer, ")")
+    print("It is *not* sarcastic, no /s", "(Value: ", answer, ")")

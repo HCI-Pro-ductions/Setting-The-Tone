@@ -1,5 +1,5 @@
 <body>
-	<header>Sarcasam Detector Test</header>
+	<header>Sarcasm Detector Test</header>
 	<form action="test.php" method="get">
 		  <input name="sentence" type="text" placeholder="Key in sentence">
 		  <input name="form_submitted" type="hidden" value="1">

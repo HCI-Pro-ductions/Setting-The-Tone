@@ -1,3 +1,4 @@
+#Some of the code is from tensorflow tutorials
 import json
 import tensorflow as tf
 
@@ -109,7 +110,7 @@ for word_num in range(1, vocab_size):
 out_v.close()
 out_m.close()
 
-sentence = ["you should really go kill yourself lmao", "happy birthday"]
+sentence = ["you are so smart omg", "happy birthday"]
 sequences = tokenizer.texts_to_sequences(sentence)
 padded = pad_sequences(sequences, maxlen=max_length, padding=padding_type, truncating=trunc_type)
 print(model.predict(padded))
