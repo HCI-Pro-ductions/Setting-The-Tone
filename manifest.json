@@ -1,6 +1,6 @@
 {
   "name": "Setting The Tone",
-  "description": "Github is trash.",
+  "description": "A chrome extension that can detect sarcasm on social media.",
   "version": "1.0.0",
   "manifest_version": 3,
   "background": {
