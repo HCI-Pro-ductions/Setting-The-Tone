@@ -7,6 +7,7 @@
     "service_worker": "stuff.js"
   },
   "permissions": ["storage", "activeTab", "scripting"],
+  "host_permissions": ["<all_urls>"],
   "action": {
     "default_popup": "sussypopup.html",
     "default_icon": {
