@@ -90,24 +90,6 @@ changeColor.addEventListener("click", e=>{
 	chrome.tabs.query({active: true, currentWindow: true}).then(resp=>{
 		const tabId = resp[0];
 		console.log(tabId['id']);
-
-		chrome.scripting.executeScript(
-			{
-				target: {tabId: tabId['id']},
-				func: getText,
-			},
-				(injectionResults) => {
-				for (const frameResult of injectionResults){
-					console.log('Frame Title: ' + frameResult.result);
-					let detectTheText = frameResult.result;
-					document.querySelector("div").innerHTML="";
-					detectTheText.forEach(e=>{
-						console.log(e);
-						document.querySelector("div").innerHTML+=`
-						<span class="invis">${e}</span>`;
-					})
-				}
-		});
 		console.log(document.querySelectorAll("span").length);
 		let x = -1;
 		for(i=0; i<document.querySelectorAll("span").length; i++){
@@ -154,4 +136,23 @@ chrome.tabs.query({active: true, currentWindow: true}).then(resp=>{
 			func: addIndicatorStyles,
 		},
 		() => {});
+	
+
+	chrome.scripting.executeScript(
+		{
+			target: {tabId: tabId['id']},
+			func: getText,
+		},
+			(injectionResults) => {
+			for (const frameResult of injectionResults){
+				console.log('Frame Title: ' + frameResult.result);
+				let detectTheText = frameResult.result;
+				document.querySelector("div").innerHTML="";
+				detectTheText.forEach(e=>{
+					console.log(e);
+					document.querySelector("div").innerHTML+=`
+					<span class="invis">${e}</span>`;
+				})
+			}
+	});
 });
