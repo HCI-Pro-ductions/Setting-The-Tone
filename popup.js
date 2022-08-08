@@ -55,7 +55,7 @@ function toggleSarcasm(){
 	}
 }
 
-function checkSarcasm(postIsSarcastic, i, divType){
+function checkSarcasm(postIsSarcastic, i){
 	//adds /s to post/comment (i think) if not already present, else toggles whether the /s displays for the sarcastic posts/comments
 	//id say we shld leave the adding indicator here in case theres a thing that the extension didnt previously see or was newly loaded in or smth
 	//but say the /s is visible and you load more comments and you press the button again you end up with the new "/s"s visible but the old ones not
@@ -63,8 +63,9 @@ function checkSarcasm(postIsSarcastic, i, divType){
 	//postIsSarcastic = true; //postIsSarcastic is whatever condition we'll be using
 	
 	//for own posts
-	if(divType == 1){
-		console.log("Testing");
+	try{
+		console.log(document.querySelectorAll("div._ab8x._ab94._ab99._ab9f._ab9m._ab9o")[i].children[2].textContent);
+		console.log(document.querySelectorAll("div._ab8x._ab94._ab99._ab9f._ab9m._ab9o")[i].children[2].textContent.slice(-2));
 		if(document.querySelectorAll("div._ab8x._ab94._ab99._ab9f._ab9m._ab9o")[i].children[2].textContent.slice(-2)!="/s"){
 			document.querySelectorAll("div._ab8x._ab94._ab99._ab9f._ab9m._ab9o")[i].children[2].innerHTML+="<indicator class='invis'> /s</indicator>";
 		}
@@ -72,16 +73,72 @@ function checkSarcasm(postIsSarcastic, i, divType){
 			document.querySelectorAll("div._ab8x._ab94._ab99._ab9f._ab9m._ab9o")[i].children[2].lastElementChild.classList.toggle('invis');
 		}
 	}
-	else{
-		console.log(i);
+	catch{
+		console.log("not this");
+	}
+	
+	try{
 		console.log(document.querySelectorAll("div._a9zs")[i].children[0].textContent);
-		console.log(postIsSarcastic);
+		console.log(document.querySelectorAll("div._a9zs")[i].children[0].textContent.slice(-2));
 		if(document.querySelectorAll("div._a9zs")[i].children[0].textContent.slice(-2)!="/s"){
 			document.querySelectorAll("div._a9zs")[i].children[0].innerHTML+="<indicator class='invis'> /s</indicator>";
 		}
 		if(postIsSarcastic){ 
 			document.querySelectorAll("div._a9zs")[i].children[0].lastElementChild.classList.toggle('invis');
 		}
+	}
+	catch{
+		console.log("not this");
+	}
+	
+	try{
+		console.log(document.querySelectorAll("div.css-901oao.r-18jsvk2.r-37j5jr.r-1blvdjr.r-16dba41.r-vrz42v.r-bcqeeo.r-bnwqim.r-qvutc0")[i].textContent)
+		if(document.querySelectorAll("div.css-901oao.r-18jsvk2.r-37j5jr.r-1blvdjr.r-16dba41.r-vrz42v.r-bcqeeo.r-bnwqim.r-qvutc0").textContent.slice(-2)!="/s"){
+			document.querySelectorAll("div.css-901oao.r-18jsvk2.r-37j5jr.r-1blvdjr.r-16dba41.r-vrz42v.r-bcqeeo.r-bnwqim.r-qvutc0").innerHTML+="<indicator class='invis'> /s</indicator>";
+		}
+		if(postIsSarcastic){ 
+			document.querySelectorAll("div.css-901oao.r-18jsvk2.r-37j5jr.r-1blvdjr.r-16dba41.r-vrz42v.r-bcqeeo.r-bnwqim.r-qvutc0").lastElementChild.classList.toggle('invis');
+		}
+	}
+	catch{
+		console.log("not this");
+	}
+	
+	try{
+		console.log(document.querySelectorAll("div.css-901oao.r-18jsvk2.r-37j5jr.r-a023e6.r-16dba41.r-rjixqe.r-bcqeeo.r-bnwqim.r-qvutc0")[i].textContent)
+		if(document.querySelectorAll("div.css-901oao.r-18jsvk2.r-37j5jr.r-a023e6.r-16dba41.r-rjixqe.r-bcqeeo.r-bnwqim.r-qvutc0").textContent.slice(-2)!="/s"){
+			document.querySelectorAll("div.css-901oao.r-18jsvk2.r-37j5jr.r-a023e6.r-16dba41.r-rjixqe.r-bcqeeo.r-bnwqim.r-qvutc0").innerHTML+="<indicator class='invis'> /s</indicator>";
+		}
+		if(postIsSarcastic){ 
+			document.querySelectorAll("div.css-901oao.r-18jsvk2.r-37j5jr.r-a023e6.r-16dba41.r-rjixqe.r-bcqeeo.r-bnwqim.r-qvutc0").lastElementChild.classList.toggle('invis');
+		}
+	}
+	catch{
+		console.log("not this");
+	}
+	
+	try{
+		if(document.querySelectorAll("h1._eYtD2XCVieq6emjKBH3m")[2].textContent.slice(-2)!="/s"){
+			document.querySelectorAll("h1._eYtD2XCVieq6emjKBH3m")[2].innerHTML+="<indicator class='invis'> /s</indicator>";
+		}
+		if(postIsSarcastic){ 
+			document.querySelectorAll("h1._eYtD2XCVieq6emjKBH3m")[2].lastElementChild.classList.toggle('invis');
+		}
+	}
+	catch{
+		console.log("not this");
+	}
+	
+	try{
+		if(document.querySelectorAll("h3._eYtD2XCVieq6emjKBH3m").textContent.slice(-2)!="/s"){
+			document.querySelectorAll("h3._eYtD2XCVieq6emjKBH3m").innerHTML+="<indicator class='invis'> /s</indicator>";
+		}
+		if(postIsSarcastic){ 
+			document.querySelectorAll("h3._eYtD2XCVieq6emjKBH3m").lastElementChild.classList.toggle('invis');
+		}
+	}
+	catch{
+		console.log("not this");
 	}
 }
 
@@ -94,7 +151,7 @@ changeColor.addEventListener("click", e=>{
 		let x = -1;
 		for(i=0; i<document.querySelectorAll("span").length; i++){
 			console.log(i, document.querySelectorAll("span").length);
-			divType=2;
+			//divType=2;
 			let urlThing = "http://34.97.97.204/Setting-The-Tone/tester.php?sentence=" + document.querySelectorAll("span")[i].innerText
 			fetch(urlThing).then(resp=>resp.text())
 			.then(data=>{
@@ -111,7 +168,7 @@ changeColor.addEventListener("click", e=>{
 					{
 						target: {tabId: tabId['id']},
 						func: checkSarcasm,
-						args: [postIsSarcastic, x, divType],
+						args: [postIsSarcastic, x],
 					},
 					() => {});
 			})
