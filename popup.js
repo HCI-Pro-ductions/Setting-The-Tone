@@ -12,15 +12,77 @@ function addIndicatorStyles(){
 }
 
 function getText(){
-	let arr = Array.from(document.querySelectorAll("div._ab8x._ab94._ab99._ab9f._ab9m._ab9o"));
-	const newArr = arr.map(e=>{
-		return e.children[2].innerText;
-	})
-	let arr2 = Array.from(document.querySelectorAll("div._a9zs"));
-	const newArr2 = arr2.map(e=>{
-		return e.children[0].innerText;
-	})
-	let finalArr = newArr.concat(newArr2)
+	finalArr = [];
+	try{
+		let arr = Array.from(document.querySelectorAll("div._ab8x._ab94._ab99._ab9f._ab9m._ab9o"));
+		const newArr = arr.map(e=>{
+			return e.children[2].innerText;
+		})
+		finalArr = finalArr.concat(newArr);
+	}
+	catch{
+		console.log("Nope");
+	}
+	try{
+		let arr2 = Array.from(document.querySelectorAll("div._a9zs"));
+		const newArr2 = arr2.map(e=>{
+			return e.children[0].innerText;
+		})
+		finalArr = finalArr.concat(newArr2);
+	}
+	catch{
+		console.log("Nope");
+	}
+	try{
+		let arr3 = Array.from(document.querySelectorAll("div.css-901oao.r-18jsvk2.r-37j5jr.r-1blvdjr.r-16dba41.r-vrz42v.r-bcqeeo.r-bnwqim.r-qvutc0"));
+		const newArr3 = arr3.map(e=>{
+			return e.innerText;
+		})
+		finalArr = finalArr.concat(newArr3);
+	}
+	catch{
+		console.log("Nope");
+	}
+	try{
+		let arr4 = Array.from(document.querySelectorAll("div.css-901oao.r-18jsvk2.r-37j5jr.r-a023e6.r-16dba41.r-rjixqe.r-bcqeeo.r-bnwqim.r-qvutc0"));
+		const newArr4 = arr4.map(e=>{
+			return e.innerText;
+		})
+		finalArr = finalArr.concat(newArr4);
+	}
+	catch{
+		console.log("Nope");
+	}
+	try{
+		let arr5 = Array.from(document.querySelectorAll("h1._eYtD2XCVieq6emjKBH3m")[2]);
+		const newArr5 = arr5.map(e=>{
+			return e.innerText;
+		})
+		finalArr = finalArr.concat(newArr5);
+	}
+	catch{
+		console.log("Nope");
+	}
+	try{
+		let arr6 = Array.from(document.querySelectorAll("h3._eYtD2XCVieq6emjKBH3m"));
+		const newArr6 = arr6.map(e=>{
+			return e.innerText;
+		})
+		finalArr = finalArr.concat(newArr6);
+	}
+	catch{
+		console.log("Nope");
+	}
+	try{
+		let arr7 = Array.from(document.querySelectorAll("p._1qeIAgB0cPwnLhDF9XSiJM"));
+		const newArr7 = arr7.map(e=>{
+			return e.innerText;
+		})
+		finalArr = finalArr.concat(newArr7);
+	}
+	catch{
+		console.log("Nope");
+	}
 	return finalArr;
 }
 
@@ -140,6 +202,19 @@ function checkSarcasm(postIsSarcastic, i){
 	catch{
 		console.log("not this");
 	}
+	
+	try{
+		console.log(document.querySelectorAll("p._1qeIAgB0cPwnLhDF9XSiJM")[i].textContent)
+		if(document.querySelectorAll("p._1qeIAgB0cPwnLhDF9XSiJM")[i].textContent.slice(-2)!="/s"){
+			document.querySelectorAll("p._1qeIAgB0cPwnLhDF9XSiJM")[i].innerHTML+="<indicator class='invis'> /s</indicator>";
+		}
+		if(postIsSarcastic){ 
+			document.querySelectorAll("p._1qeIAgB0cPwnLhDF9XSiJM")[i].lastElementChild.classList.toggle('invis');
+		}
+	}
+	catch{
+		console.log("not this")
+	}
 }
 
 changeColor.addEventListener("click", e=>{
@@ -148,31 +223,36 @@ changeColor.addEventListener("click", e=>{
 		const tabId = resp[0];
 		console.log(tabId['id']);
 		console.log(document.querySelectorAll("span").length);
-		let x = -1;
+		let urlThing = "http://34.97.97.204/Setting-The-Tone/tester.php?"
 		for(i=0; i<document.querySelectorAll("span").length; i++){
 			console.log(i, document.querySelectorAll("span").length);
 			//divType=2;
-			let urlThing = "http://34.97.97.204/Setting-The-Tone/tester.php?sentence=" + document.querySelectorAll("span")[i].innerText
-			fetch(urlThing).then(resp=>resp.text())
-			.then(data=>{
-				console.log(data);
-				console.log(data.slice(-1));
-				if(data.slice(-1)=="1"){
-					postIsSarcastic = true;
-				}
-				else{
+			if(i==0){
+				urlThing += "?sentence" + i.toString() + "=" + document.querySelectorAll("span")[i].innerText;
+			}
+			else{
+				urlThing += "&sentence" + i.toString() + "=" + document.querySelectorAll("span")[i].innerText;
+			}
+		}
+		fetch(urlThing).then(resp=>resp.text())
+		.then(data=>{
+			console.log(data);
+			console.log(data.slice(-document.querySelectorAll("span").length));
+			booleanValues = data.slice(-document.querySelectorAll("span").length);
+			for(count=0; count<document.querySelectorAll("span").length; count++){
+				let postIsSarcastic = true;
+				if(booleanValues.charAt(count)=="0"){
 					postIsSarcastic = false;
 				}
-				x+=1;
 				chrome.scripting.executeScript(
 					{
 						target: {tabId: tabId['id']},
 						func: checkSarcasm,
-						args: [postIsSarcastic, x],
+						args: [postIsSarcastic, count],
 					},
 					() => {});
-			})
-		}
+			}
+		})
 	});
 })
 
