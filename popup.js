@@ -1,5 +1,5 @@
 // i think this might be better possibly you can take the parts that you think are cool
-
+let haveFetched = false;
 
 function addIndicatorStyles(){
 	document.querySelector("style").innerHTML+=`
@@ -92,31 +92,56 @@ function toggleSarcasm(){
 	//id say we shld leave the adding indicator here in case theres a thing that the extension didnt previously see or was newly loaded in or smth
 	//but say the /s is visible and you load more comments and you press the button again you end up with the new "/s"s visible but the old ones not
 
-	postIsSarcastic = true; //postIsSarcastic is whatever condition we'll be using
+	//postIsSarcastic = true; //postIsSarcastic is whatever condition we'll be using
 	
 	//for own posts
 	for(let i=0;i<(document.querySelectorAll("div._ab8x._ab94._ab99._ab9f._ab9m._ab9o")).length;i++){
 		console.log(document.querySelectorAll("div._ab8x._ab94._ab99._ab9f._ab9m._ab9o")[i].children[2].textContent);
 		console.log(document.querySelectorAll("div._ab8x._ab94._ab99._ab9f._ab9m._ab9o")[i].children[2].textContent.slice(-2));
+		/*
 		if(document.querySelectorAll("div._ab8x._ab94._ab99._ab9f._ab9m._ab9o")[i].children[2].textContent.slice(-2)!="/s"){
 			document.querySelectorAll("div._ab8x._ab94._ab99._ab9f._ab9m._ab9o")[i].children[2].innerHTML+="<indicator class='invis'> /s</indicator>";
 		}
-		if(postIsSarcastic){ 
-			document.querySelectorAll("div._ab8x._ab94._ab99._ab9f._ab9m._ab9o")[i].children[2].lastElementChild.classList.toggle('invis');
-		}
+		*/
+		document.querySelectorAll("div._ab8x._ab94._ab99._ab9f._ab9m._ab9o")[i].children[2].lastElementChild.classList.toggle('invis');
 	}
 	for(let i=0;i<(document.querySelectorAll("div._a9zs")).length;i++){
 		console.log(document.querySelectorAll("div._a9zs")[i].children[0].textContent);
 		console.log(document.querySelectorAll("div._a9zs")[i].children[0].textContent.slice(-2));
+		/*
 		if(document.querySelectorAll("div._a9zs")[i].children[0].textContent.slice(-2)!="/s"){
 			document.querySelectorAll("div._a9zs")[i].children[0].innerHTML+="<indicator class='invis'> /s</indicator>";
 		}
-		if(postIsSarcastic){ 
-			document.querySelectorAll("div._a9zs")[i].children[0].lastElementChild.classList.toggle('invis');
-		}
+		*/ 
+		document.querySelectorAll("div._a9zs")[i].children[0].lastElementChild.classList.toggle('invis');
+	}
+	for(let i=0;i<document.querySelectorAll("p._1qeIAgB0cPwnLhDF9XSiJM").length;i++){
+		console.log(document.querySelectorAll("p._1qeIAgB0cPwnLhDF9XSiJM")[i].textContent);
+		document.querySelectorAll("p._1qeIAgB0cPwnLhDF9XSiJM")[i].lastElementChild.classList.toggle('invis');
+	}
+
+	for(let i=0;i<document.querySelectorAll("div.css-901oao.r-18jsvk2.r-37j5jr.r-1blvdjr.r-16dba41.r-vrz42v.r-bcqeeo.r-bnwqim.r-qvutc0").length;i++){
+		console.log(document.querySelectorAll("div.css-901oao.r-18jsvk2.r-37j5jr.r-1blvdjr.r-16dba41.r-vrz42v.r-bcqeeo.r-bnwqim.r-qvutc0")[i].textContent);
+		document.querySelectorAll("div.css-901oao.r-18jsvk2.r-37j5jr.r-1blvdjr.r-16dba41.r-vrz42v.r-bcqeeo.r-bnwqim.r-qvutc0").lastElementChild.classList.toggle('invis');
+	}
+
+	for(let i=0;i<document.querySelectorAll("div.css-901oao.r-18jsvk2.r-37j5jr.r-a023e6.r-16dba41.r-rjixqe.r-bcqeeo.r-bnwqim.r-qvutc0").length;i++){
+		console.log(document.querySelectorAll("div.css-901oao.r-18jsvk2.r-37j5jr.r-a023e6.r-16dba41.r-rjixqe.r-bcqeeo.r-bnwqim.r-qvutc0")[i].textContent);
+		document.querySelectorAll("div.css-901oao.r-18jsvk2.r-37j5jr.r-a023e6.r-16dba41.r-rjixqe.r-bcqeeo.r-bnwqim.r-qvutc0").lastElementChild.classList.toggle('invis');
+	}
+
+	try{
+		document.querySelectorAll("h1._eYtD2XCVieq6emjKBH3m")[2].lastElementChild.classList.toggle('invis');
+	}
+	catch{
+		console.log("Not on reddit");
+	}
+
+	for(let i=0;i<document.querySelectorAll("h3._eYtD2XCVieq6emjKBH3m").length;i++){
+		console.log(document.querySelectorAll("h3._eYtD2XCVieq6emjKBH3m")[i].textContent);
+		document.querySelectorAll("h3._eYtD2XCVieq6emjKBH3m").lastElementChild.classList.toggle('invis');
 	}
 }
-
 function checkSarcasm(postIsSarcastic, i){
 	//adds /s to post/comment (i think) if not already present, else toggles whether the /s displays for the sarcastic posts/comments
 	//id say we shld leave the adding indicator here in case theres a thing that the extension didnt previously see or was newly loaded in or smth
@@ -125,9 +150,116 @@ function checkSarcasm(postIsSarcastic, i){
 	//postIsSarcastic = true; //postIsSarcastic is whatever condition we'll be using
 	
 	//for own posts
+	console.log(i);
 	try{
 		console.log(document.querySelectorAll("div._ab8x._ab94._ab99._ab9f._ab9m._ab9o")[i].children[2].textContent);
 		console.log(document.querySelectorAll("div._ab8x._ab94._ab99._ab9f._ab9m._ab9o")[i].children[2].textContent.slice(-2));
+		if(document.querySelectorAll("div._ab8x._ab94._ab99._ab9f._ab9m._ab9o")[i].children[2].innerHTML.slice(-12)!="</indicator>"){
+			if(postIsSarcastic){
+				document.querySelectorAll("div._ab8x._ab94._ab99._ab9f._ab9m._ab9o")[i].children[2].innerHTML+="<indicator> /s</indicator>";
+			}
+			else{ 
+				document.querySelectorAll("div._ab8x._ab94._ab99._ab9f._ab9m._ab9o")[i].children[2].innerHTML+="<indicator> /srs</indicator>";
+			}
+		}
+	}
+	catch{
+		console.log("not this 1");
+	}
+	
+	try{
+		console.log(document.querySelectorAll("div._a9zs")[i].children[0].textContent);
+		console.log(document.querySelectorAll("div._a9zs")[i].children[0].textContent.slice(-2));
+		if(document.querySelectorAll("div._a9zs")[i].children[0].innerHTML.slice(-12)!="</indicator>"){
+			if(postIsSarcastic){
+				document.querySelectorAll("div._a9zs")[i].children[0].innerHTML+="<indicator> /s</indicator>";
+			}
+			else{ 
+				document.querySelectorAll("div._a9zs")[i].children[0].innerHTML+="<indicator> /srs</indicator>";
+			}
+		}
+	}
+	catch{
+		console.log("not this 2");
+	}
+	
+	try{
+		console.log(document.querySelectorAll("div.css-901oao.r-18jsvk2.r-37j5jr.r-1blvdjr.r-16dba41.r-vrz42v.r-bcqeeo.r-bnwqim.r-qvutc0")[i].textContent);
+		if(document.querySelectorAll("div.css-901oao.r-18jsvk2.r-37j5jr.r-1blvdjr.r-16dba41.r-vrz42v.r-bcqeeo.r-bnwqim.r-qvutc0")[i].innerHTML.slice(-12)!="</indicator>"){
+			if(postIsSarcastic){
+				document.querySelectorAll("div.css-901oao.r-18jsvk2.r-37j5jr.r-1blvdjr.r-16dba41.r-vrz42v.r-bcqeeo.r-bnwqim.r-qvutc0")[i].innerHTML+="<indicator> /s</indicator>";
+			}
+			else{ 
+				document.querySelectorAll("div.css-901oao.r-18jsvk2.r-37j5jr.r-1blvdjr.r-16dba41.r-vrz42v.r-bcqeeo.r-bnwqim.r-qvutc0")[i].innerHTML+="<indicator> /srs</indicator>";
+			}
+		}
+	}
+	catch{
+		console.log("not this 3");
+	}
+	
+	try{
+		console.log(document.querySelectorAll("div.css-901oao.r-18jsvk2.r-37j5jr.r-a023e6.r-16dba41.r-rjixqe.r-bcqeeo.r-bnwqim.r-qvutc0")[i].textContent);
+		if(document.querySelectorAll("div.css-901oao.r-18jsvk2.r-37j5jr.r-a023e6.r-16dba41.r-rjixqe.r-bcqeeo.r-bnwqim.r-qvutc0")[i].innerHTML.slice(-12)!="</indicator>"){
+			if(postIsSarcastic){
+				document.querySelectorAll("div.css-901oao.r-18jsvk2.r-37j5jr.r-a023e6.r-16dba41.r-rjixqe.r-bcqeeo.r-bnwqim.r-qvutc0")[i].innerHTML+="<indicator> /s</indicator>";
+			}
+			else{ 
+				document.querySelectorAll("div.css-901oao.r-18jsvk2.r-37j5jr.r-a023e6.r-16dba41.r-rjixqe.r-bcqeeo.r-bnwqim.r-qvutc0")[i].innerHTML+="<indicator> /srs</indicator>";
+			}
+		}
+	}
+	catch{
+		console.log("not this 4");
+	}
+	
+	try{
+		console.log(document.querySelectorAll("h1._eYtD2XCVieq6emjKBH3m")[2].textContent);
+		if(document.querySelectorAll("h1._eYtD2XCVieq6emjKBH3m")[i].innerHTML.slice(-12)!="</indicator>"){
+			if(postIsSarcastic){
+				document.querySelectorAll("h1._eYtD2XCVieq6emjKBH3m")[2].innerHTML+="<indicator> /s</indicator>";
+			}
+			else{ 
+				document.querySelectorAll("h1._eYtD2XCVieq6emjKBH3m")[2].innerHTML+="<indicator> /srs</indicator>";
+			}
+		}
+	}
+	catch{
+		console.log("not this 5");
+	}
+	
+	try{
+		console.log(document.querySelectorAll("h3._eYtD2XCVieq6emjKBH3m")[i].textContent);
+		if(document.querySelectorAll("h3._eYtD2XCVieq6emjKBH3m")[i].innerHTML.slice(-12)!="</indicator>"){
+			if(postIsSarcastic){
+				document.querySelectorAll("h3._eYtD2XCVieq6emjKBH3m")[i].innerHTML+="<indicator> /s</indicator>";
+			}
+			else{ 
+				document.querySelectorAll("h3._eYtD2XCVieq6emjKBH3m")[i].innerHTML+="<indicator> /srs</indicator>";
+			}
+		}
+	}
+	catch{
+		console.log("not this 6");
+	}
+
+	try{
+		console.log(document.querySelectorAll("p._1qeIAgB0cPwnLhDF9XSiJM")[i].textContent)
+		if(document.querySelectorAll("p._1qeIAgB0cPwnLhDF9XSiJM")[i].innerHTML.slice(-12)!="</indicator>"){
+			if(postIsSarcastic){
+				document.querySelectorAll("p._1qeIAgB0cPwnLhDF9XSiJM")[i].innerHTML+="<indicator> /s</indicator>";
+			}
+			else{ 
+				document.querySelectorAll("p._1qeIAgB0cPwnLhDF9XSiJM")[i].innerHTML+="<indicator> /srs</indicator>";
+			}
+		}
+	}
+	catch{
+		console.log("not this 7")
+	}
+	/*
+	if(divType == 1){
+		console.log("Testing");
 		if(document.querySelectorAll("div._ab8x._ab94._ab99._ab9f._ab9m._ab9o")[i].children[2].textContent.slice(-2)!="/s"){
 			document.querySelectorAll("div._ab8x._ab94._ab99._ab9f._ab9m._ab9o")[i].children[2].innerHTML+="<indicator class='invis'> /s</indicator>";
 		}
@@ -135,13 +267,10 @@ function checkSarcasm(postIsSarcastic, i){
 			document.querySelectorAll("div._ab8x._ab94._ab99._ab9f._ab9m._ab9o")[i].children[2].lastElementChild.classList.toggle('invis');
 		}
 	}
-	catch{
-		console.log("not this");
-	}
-	
-	try{
+	else{
+		console.log(i);
 		console.log(document.querySelectorAll("div._a9zs")[i].children[0].textContent);
-		console.log(document.querySelectorAll("div._a9zs")[i].children[0].textContent.slice(-2));
+		console.log(postIsSarcastic);
 		if(document.querySelectorAll("div._a9zs")[i].children[0].textContent.slice(-2)!="/s"){
 			document.querySelectorAll("div._a9zs")[i].children[0].innerHTML+="<indicator class='invis'> /s</indicator>";
 		}
@@ -149,110 +278,70 @@ function checkSarcasm(postIsSarcastic, i){
 			document.querySelectorAll("div._a9zs")[i].children[0].lastElementChild.classList.toggle('invis');
 		}
 	}
-	catch{
-		console.log("not this");
-	}
-	
-	try{
-		console.log(document.querySelectorAll("div.css-901oao.r-18jsvk2.r-37j5jr.r-1blvdjr.r-16dba41.r-vrz42v.r-bcqeeo.r-bnwqim.r-qvutc0")[i].textContent)
-		if(document.querySelectorAll("div.css-901oao.r-18jsvk2.r-37j5jr.r-1blvdjr.r-16dba41.r-vrz42v.r-bcqeeo.r-bnwqim.r-qvutc0").textContent.slice(-2)!="/s"){
-			document.querySelectorAll("div.css-901oao.r-18jsvk2.r-37j5jr.r-1blvdjr.r-16dba41.r-vrz42v.r-bcqeeo.r-bnwqim.r-qvutc0").innerHTML+="<indicator class='invis'> /s</indicator>";
-		}
-		if(postIsSarcastic){ 
-			document.querySelectorAll("div.css-901oao.r-18jsvk2.r-37j5jr.r-1blvdjr.r-16dba41.r-vrz42v.r-bcqeeo.r-bnwqim.r-qvutc0").lastElementChild.classList.toggle('invis');
-		}
-	}
-	catch{
-		console.log("not this");
-	}
-	
-	try{
-		console.log(document.querySelectorAll("div.css-901oao.r-18jsvk2.r-37j5jr.r-a023e6.r-16dba41.r-rjixqe.r-bcqeeo.r-bnwqim.r-qvutc0")[i].textContent)
-		if(document.querySelectorAll("div.css-901oao.r-18jsvk2.r-37j5jr.r-a023e6.r-16dba41.r-rjixqe.r-bcqeeo.r-bnwqim.r-qvutc0").textContent.slice(-2)!="/s"){
-			document.querySelectorAll("div.css-901oao.r-18jsvk2.r-37j5jr.r-a023e6.r-16dba41.r-rjixqe.r-bcqeeo.r-bnwqim.r-qvutc0").innerHTML+="<indicator class='invis'> /s</indicator>";
-		}
-		if(postIsSarcastic){ 
-			document.querySelectorAll("div.css-901oao.r-18jsvk2.r-37j5jr.r-a023e6.r-16dba41.r-rjixqe.r-bcqeeo.r-bnwqim.r-qvutc0").lastElementChild.classList.toggle('invis');
-		}
-	}
-	catch{
-		console.log("not this");
-	}
-	
-	try{
-		if(document.querySelectorAll("h1._eYtD2XCVieq6emjKBH3m")[2].textContent.slice(-2)!="/s"){
-			document.querySelectorAll("h1._eYtD2XCVieq6emjKBH3m")[2].innerHTML+="<indicator class='invis'> /s</indicator>";
-		}
-		if(postIsSarcastic){ 
-			document.querySelectorAll("h1._eYtD2XCVieq6emjKBH3m")[2].lastElementChild.classList.toggle('invis');
-		}
-	}
-	catch{
-		console.log("not this");
-	}
-	
-	try{
-		if(document.querySelectorAll("h3._eYtD2XCVieq6emjKBH3m").textContent.slice(-2)!="/s"){
-			document.querySelectorAll("h3._eYtD2XCVieq6emjKBH3m").innerHTML+="<indicator class='invis'> /s</indicator>";
-		}
-		if(postIsSarcastic){ 
-			document.querySelectorAll("h3._eYtD2XCVieq6emjKBH3m").lastElementChild.classList.toggle('invis');
-		}
-	}
-	catch{
-		console.log("not this");
-	}
-	
-	try{
-		console.log(document.querySelectorAll("p._1qeIAgB0cPwnLhDF9XSiJM")[i].textContent)
-		if(document.querySelectorAll("p._1qeIAgB0cPwnLhDF9XSiJM")[i].textContent.slice(-2)!="/s"){
-			document.querySelectorAll("p._1qeIAgB0cPwnLhDF9XSiJM")[i].innerHTML+="<indicator class='invis'> /s</indicator>";
-		}
-		if(postIsSarcastic){ 
-			document.querySelectorAll("p._1qeIAgB0cPwnLhDF9XSiJM")[i].lastElementChild.classList.toggle('invis');
-		}
-	}
-	catch{
-		console.log("not this")
-	}
+	*/
 }
 
 changeColor.addEventListener("click", e=>{
 	changeColor.style.backgroundColor = 'rgb(40, 0, 0)';
 	chrome.tabs.query({active: true, currentWindow: true}).then(resp=>{
 		const tabId = resp[0];
-		console.log(tabId['id']);
+		//console.log(tabId['id']);
 		console.log(document.querySelectorAll("span").length);
-		let urlThing = "http://34.97.97.204/Setting-The-Tone/tester.php?"
+		//let x = -1;
+		let urlThing = "http://34.97.97.204/Setting-The-Tone/tester.php?";
 		for(i=0; i<document.querySelectorAll("span").length; i++){
 			console.log(i, document.querySelectorAll("span").length);
 			//divType=2;
+			if(document.querySelectorAll("span")[i].innerText.includes("&")){
+				document.querySelectorAll("span")[i].innerText=document.querySelectorAll("span")[i].innerText.replace(/&/g, 'and');
+			}
+			if(document.querySelectorAll("span")[i].innerText.includes("\n")){
+				document.querySelectorAll("span")[i].innerText=document.querySelectorAll("span")[i].innerText.replace(/\n/g, ' ');
+			}
+			if(document.querySelectorAll("span")[i].innerText.includes("\"")){
+				document.querySelectorAll("span")[i].innerText=document.querySelectorAll("span")[i].innerText.replace(/"/g, ' ');
+			}
+			if(document.querySelectorAll("span")[i].innerText.includes("#")){
+				document.querySelectorAll("span")[i].innerText=document.querySelectorAll("span")[i].innerText.replace(/#/g, ' ');
+			}
 			if(i==0){
-				urlThing += "?sentence" + i.toString() + "=" + document.querySelectorAll("span")[i].innerText;
+				urlThing += "sentence" + i.toString() + "=" + document.querySelectorAll("span")[i].innerText;
 			}
 			else{
-				urlThing += "&sentence" + i.toString() + "=" + document.querySelectorAll("span")[i].innerText;
+				urlThing += "&amp;sentence" + i.toString() + "=" + document.querySelectorAll("span")[i].innerText;
 			}
 		}
-		fetch(urlThing).then(resp=>resp.text())
-		.then(data=>{
-			console.log(data);
-			console.log(data.slice(-document.querySelectorAll("span").length));
-			booleanValues = data.slice(-document.querySelectorAll("span").length);
-			for(count=0; count<document.querySelectorAll("span").length; count++){
-				let postIsSarcastic = true;
-				if(booleanValues.charAt(count)=="0"){
-					postIsSarcastic = false;
+		console.log(urlThing);
+		if(haveFetched==false){
+			fetch(urlThing).then(resp=>resp.text())
+			.then(data=>{
+				console.log(data);
+				console.log(data.slice(-document.querySelectorAll("span").length));
+				haveFetched=true;
+				booleanValues = data.slice(-document.querySelectorAll("span").length);
+				for(count=0; count<document.querySelectorAll("span").length; count++){
+					let postIsSarcastic = true;
+					if(booleanValues.charAt(count)=="0"){
+						postIsSarcastic = false;
+					}
+					chrome.scripting.executeScript(
+						{
+							target: {tabId: tabId['id']},
+							func: checkSarcasm,
+							args: [postIsSarcastic, count],
+						},
+						() => {});
 				}
-				chrome.scripting.executeScript(
-					{
-						target: {tabId: tabId['id']},
-						func: checkSarcasm,
-						args: [postIsSarcastic, count],
-					},
-					() => {});
-			}
-		})
+			})
+		}
+		else{
+			chrome.scripting.executeScript(
+				{
+					target: {tabId: tabId['id']},
+					func: toggleSarcasm,
+				},
+				() => {});
+		}
 	});
 })
 
@@ -274,7 +363,6 @@ chrome.tabs.query({active: true, currentWindow: true}).then(resp=>{
 		},
 		() => {});
 	
-
 	chrome.scripting.executeScript(
 		{
 			target: {tabId: tabId['id']},
@@ -286,10 +374,69 @@ chrome.tabs.query({active: true, currentWindow: true}).then(resp=>{
 				let detectTheText = frameResult.result;
 				document.querySelector("div").innerHTML="";
 				detectTheText.forEach(e=>{
-					console.log(e);
+					//console.log(e);
 					document.querySelector("div").innerHTML+=`
 					<span class="invis">${e}</span>`;
 				})
 			}
 	});
 });
+
+/*
+function toggleSarcasm(){
+	//adds /s to post/comment (i think) if not already present, else toggles whether the /s displays for the sarcastic posts/comments
+	//id say we shld leave the adding indicator here in case theres a thing that the extension didnt previously see or was newly loaded in or smth
+	//but say the /s is visible and you load more comments and you press the button again you end up with the new "/s"s visible but the old ones not
+	//postIsSarcastic is whatever condition we'll be using
+	let postIsSarcastic = true;
+	//for own posts
+	for(let i=0;i<(document.querySelectorAll("div._ab8x._ab94._ab99._ab9f._ab9m._ab9o")).length;i++){
+		console.log(document.querySelectorAll("div._ab8x._ab94._ab99._ab9f._ab9m._ab9o")[i].children[2].textContent);
+		console.log(document.querySelectorAll("div._ab8x._ab94._ab99._ab9f._ab9m._ab9o")[i].children[2].textContent.slice(-2));
+		if(document.querySelectorAll("div._ab8x._ab94._ab99._ab9f._ab9m._ab9o")[i].children[2].textContent.slice(-2)!="/s"){
+			document.querySelectorAll("div._ab8x._ab94._ab99._ab9f._ab9m._ab9o")[i].children[2].innerHTML+="<indicator class='invis'> /s</indicator>";
+		}
+		
+		urlThing="http://34.97.97.204/Setting-The-Tone/tester.php?sentence=" + document.querySelectorAll("div._ab8x._ab94._ab99._ab9f._ab9m._ab9o")[i].children[2].innerText;
+		console.log(urlThing);
+		fetch(urlThing).then(resp=>resp.text())
+		.then(data=>{
+			//console.log(data);
+			console.log(data.slice(-1));
+			if(data.slice(-1)=="0"){
+				postIsSarcastic = true;
+			}
+			else{
+				postIsSarcastic = false;
+			}
+			if(postIsSarcastic){ 
+				document.querySelectorAll("div._ab8x._ab94._ab99._ab9f._ab9m._ab9o")[i].children[2].lastElementChild.classList.toggle('invis');
+			}
+		})
+	}
+	for(let i=0;i<(document.querySelectorAll("div._a9zs")).length;i++){
+		console.log(document.querySelectorAll("div._a9zs")[i].children[0].textContent);
+		console.log(document.querySelectorAll("div._a9zs")[i].children[0].textContent.slice(-2));
+		if(document.querySelectorAll("div._a9zs")[i].children[0].textContent.slice(-2)!="/s"){
+			document.querySelectorAll("div._a9zs")[i].children[0].innerHTML+="<indicator class='invis'> /s</indicator>";
+		}
+		
+		urlThing="http://34.97.97.204/Setting-The-Tone/tester.php?sentence=" + document.querySelectorAll("div._a9zs")[i].children[0].innerText;
+		console.log(urlThing);
+		fetch(urlThing).then(resp=>resp.text())
+		.then(data=>{
+			//console.log(data);
+			console.log(data.slice(-1));
+			if(data.slice(-1)=="0"){
+				postIsSarcastic = true;
+			}
+			else{
+				postIsSarcastic = false;
+			}
+			if(postIsSarcastic){ 
+				document.querySelectorAll("div._a9zs")[i].children[0].lastElementChild.classList.toggle('invis');
+			}
+		})
+	}
+}
+*/
