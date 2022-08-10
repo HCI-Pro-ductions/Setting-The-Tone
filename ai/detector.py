@@ -3,11 +3,11 @@ import tensorflow as tf
 
 from tensorflow.keras.preprocessing.sequence import pad_sequences
 
-max_length = 100
+max_length = 200
 trunc_type='post'
 padding_type='post'
 oov_tok = "<OOV>"
-vocab_size = 10000
+vocab_size = 20000
 
 model = tf.keras.models.load_model('ai/saved_training/model')
 #print(model.summary())

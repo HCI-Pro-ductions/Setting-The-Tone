@@ -7,12 +7,12 @@ from tensorflow.keras.preprocessing.sequence import pad_sequences
 
 vocab_size = 20000
 embedding_dim = 16
-max_length = 100
+max_length = 200
 trunc_type='post'
 padding_type='post'
 oov_tok = "<OOV>"
-training_size = 20000
-testing_size = 3000
+training_size = 200000
+testing_size = 20000
 
 with open("ai/datasets/dataset.json", 'r') as f:
     datastore = json.load(f)
@@ -21,7 +21,7 @@ sentences = []
 labels = []
 
 for item in datastore:
-    sentences.append(item['comment'])
+    sentences.append(str(item['comment']))
     labels.append(item['is_sarcastic'])
 
 
