@@ -281,6 +281,165 @@ function checkSarcasm(postIsSarcastic, i){
 	*/
 }
 
+function checkPos(tones, i){
+	//adds /s to post/comment (i think) if not already present, else toggles whether the /s displays for the sarcastic posts/comments
+	//id say we shld leave the adding indicator here in case theres a thing that the extension didnt previously see or was newly loaded in or smth
+	//but say the /s is visible and you load more comments and you press the button again you end up with the new "/s"s visible but the old ones not
+
+	//postIsSarcastic = true; //postIsSarcastic is whatever condition we'll be using
+	
+	//for own posts
+	console.log(i);
+	try{
+		console.log(document.querySelectorAll("div._ab8x._ab94._ab99._ab9f._ab9m._ab9o")[i].children[2].textContent);
+		console.log(document.querySelectorAll("div._ab8x._ab94._ab99._ab9f._ab9m._ab9o")[i].children[2].textContent.slice(-2));
+		if(document.querySelectorAll("div._ab8x._ab94._ab99._ab9f._ab9m._ab9o")[i].children[2].innerHTML.slice(-12)!="</indicator>"){
+			if(tones==0){
+				document.querySelectorAll("div._ab8x._ab94._ab99._ab9f._ab9m._ab9o")[i].children[2].innerHTML+="<indicator> /neg</indicator>";
+			}
+			else if(tones==1){
+				document.querySelectorAll("div._ab8x._ab94._ab99._ab9f._ab9m._ab9o")[i].children[2].innerHTML+="<indicator> /neu</indicator>";
+			}
+			else{ 
+				document.querySelectorAll("div._ab8x._ab94._ab99._ab9f._ab9m._ab9o")[i].children[2].innerHTML+="<indicator> /pos</indicator>";
+			}
+		}
+	}
+	catch{
+		console.log("not this 1");
+	}
+	
+	try{
+		console.log(document.querySelectorAll("div._a9zs")[i].children[0].textContent);
+		console.log(document.querySelectorAll("div._a9zs")[i].children[0].textContent.slice(-2));
+		if(document.querySelectorAll("div._a9zs")[i].children[0].innerHTML.slice(-12)!="</indicator>"){
+			if(tones==0){
+				document.querySelectorAll("div._a9zs")[i].children[0].innerHTML+="<indicator> /neg</indicator>";
+			}
+			else if(tones==1){
+				document.querySelectorAll("div._a9zs")[i].children[0].innerHTML+="<indicator> /neu</indicator>";
+			}
+			else{ 
+				document.querySelectorAll("div._a9zs")[i].children[0].innerHTML+="<indicator> /pos</indicator>";
+			}
+		}
+	}
+	catch{
+		console.log("not this 2");
+	}
+	
+	try{
+		console.log(document.querySelectorAll("div.css-901oao.r-18jsvk2.r-37j5jr.r-1blvdjr.r-16dba41.r-vrz42v.r-bcqeeo.r-bnwqim.r-qvutc0")[i].textContent);
+		if(document.querySelectorAll("div.css-901oao.r-18jsvk2.r-37j5jr.r-1blvdjr.r-16dba41.r-vrz42v.r-bcqeeo.r-bnwqim.r-qvutc0")[i].innerHTML.slice(-12)!="</indicator>"){
+			if(tones==0){
+				document.querySelectorAll("div.css-901oao.r-18jsvk2.r-37j5jr.r-1blvdjr.r-16dba41.r-vrz42v.r-bcqeeo.r-bnwqim.r-qvutc0")[i].innerHTML+="<indicator> /neg</indicator>";
+			}
+			else if(tones==1){
+				document.querySelectorAll("div.css-901oao.r-18jsvk2.r-37j5jr.r-1blvdjr.r-16dba41.r-vrz42v.r-bcqeeo.r-bnwqim.r-qvutc0")[i].innerHTML+="<indicator> /neu</indicator>";
+			}
+			else{ 
+				document.querySelectorAll("div.css-901oao.r-18jsvk2.r-37j5jr.r-1blvdjr.r-16dba41.r-vrz42v.r-bcqeeo.r-bnwqim.r-qvutc0")[i].innerHTML+="<indicator> /pos</indicator>";
+			}
+		}
+	}
+	catch{
+		console.log("not this 3");
+	}
+	
+	try{
+		console.log(document.querySelectorAll("div.css-901oao.r-18jsvk2.r-37j5jr.r-a023e6.r-16dba41.r-rjixqe.r-bcqeeo.r-bnwqim.r-qvutc0")[i].textContent);
+		if(document.querySelectorAll("div.css-901oao.r-18jsvk2.r-37j5jr.r-a023e6.r-16dba41.r-rjixqe.r-bcqeeo.r-bnwqim.r-qvutc0")[i].innerHTML.slice(-12)!="</indicator>"){
+			if(tones==0){
+				document.querySelectorAll("div.css-901oao.r-18jsvk2.r-37j5jr.r-a023e6.r-16dba41.r-rjixqe.r-bcqeeo.r-bnwqim.r-qvutc0")[i].innerHTML+="<indicator> /neg</indicator>";
+			}
+			else if(tones==1){
+				document.querySelectorAll("div.css-901oao.r-18jsvk2.r-37j5jr.r-a023e6.r-16dba41.r-rjixqe.r-bcqeeo.r-bnwqim.r-qvutc0")[i].innerHTML+="<indicator> /neu</indicator>";
+			}
+			else{ 
+				document.querySelectorAll("div.css-901oao.r-18jsvk2.r-37j5jr.r-a023e6.r-16dba41.r-rjixqe.r-bcqeeo.r-bnwqim.r-qvutc0")[i].innerHTML+="<indicator> /pos</indicator>";
+			}
+		}
+	}
+	catch{
+		console.log("not this 4");
+	}
+	
+	try{
+		console.log(document.querySelectorAll("h1._eYtD2XCVieq6emjKBH3m")[2].textContent);
+		if(document.querySelectorAll("h1._eYtD2XCVieq6emjKBH3m")[i].innerHTML.slice(-12)!="</indicator>"){
+			if(tones==0){
+				document.querySelectorAll("h1._eYtD2XCVieq6emjKBH3m")[2].innerHTML+="<indicator> /neg</indicator>";
+			}
+			else if(tones==1){
+				document.querySelectorAll("h1._eYtD2XCVieq6emjKBH3m")[2].innerHTML+="<indicator> /neu</indicator>";
+			}
+			else{ 
+				document.querySelectorAll("h1._eYtD2XCVieq6emjKBH3m")[2].innerHTML+="<indicator> /pos</indicator>";
+			}
+		}
+	}
+	catch{
+		console.log("not this 5");
+	}
+	
+	try{
+		console.log(document.querySelectorAll("h3._eYtD2XCVieq6emjKBH3m")[i].textContent);
+		if(document.querySelectorAll("h3._eYtD2XCVieq6emjKBH3m")[i].innerHTML.slice(-12)!="</indicator>"){
+			if(tones==0){
+				document.querySelectorAll("h3._eYtD2XCVieq6emjKBH3m")[i].innerHTML+="<indicator> /neg</indicator>";
+			}
+			else if(tones==1){
+				document.querySelectorAll("h3._eYtD2XCVieq6emjKBH3m")[i].innerHTML+="<indicator> /neu</indicator>";
+			}
+			else{ 
+				document.querySelectorAll("h3._eYtD2XCVieq6emjKBH3m")[i].innerHTML+="<indicator> /pos</indicator>";
+			}
+		}
+	}
+	catch{
+		console.log("not this 6");
+	}
+
+	try{
+		console.log(document.querySelectorAll("p._1qeIAgB0cPwnLhDF9XSiJM")[i].textContent)
+		if(document.querySelectorAll("p._1qeIAgB0cPwnLhDF9XSiJM")[i].innerHTML.slice(-12)!="</indicator>"){
+			if(tones==0){
+				document.querySelectorAll("p._1qeIAgB0cPwnLhDF9XSiJM")[i].innerHTML+="<indicator> /neg</indicator>";
+			}
+			else if(tones==1){
+				document.querySelectorAll("p._1qeIAgB0cPwnLhDF9XSiJM")[i].innerHTML+="<indicator> /neu</indicator>";
+			}
+			else{ 
+				document.querySelectorAll("p._1qeIAgB0cPwnLhDF9XSiJM")[i].innerHTML+="<indicator> /pos</indicator>";
+			}
+		}
+	}
+	catch{
+		console.log("not this 7")
+	}
+	/*
+	if(divType == 1){
+		console.log("Testing");
+		if(document.querySelectorAll("div._ab8x._ab94._ab99._ab9f._ab9m._ab9o")[i].children[2].textContent.slice(-2)!="/s"){
+			document.querySelectorAll("div._ab8x._ab94._ab99._ab9f._ab9m._ab9o")[i].children[2].innerHTML+="<indicator class='invis'> /s</indicator>";
+		}
+		if(postIsSarcastic){ 
+			document.querySelectorAll("div._ab8x._ab94._ab99._ab9f._ab9m._ab9o")[i].children[2].lastElementChild.classList.toggle('invis');
+		}
+	}
+	else{
+		console.log(i);
+		console.log(document.querySelectorAll("div._a9zs")[i].children[0].textContent);
+		console.log(postIsSarcastic);
+		if(document.querySelectorAll("div._a9zs")[i].children[0].textContent.slice(-2)!="/s"){
+			document.querySelectorAll("div._a9zs")[i].children[0].innerHTML+="<indicator class='invis'> /s</indicator>";
+		}
+		if(postIsSarcastic){ 
+			document.querySelectorAll("div._a9zs")[i].children[0].lastElementChild.classList.toggle('invis');
+		}
+	}
+	*/
+}
 changeColor.addEventListener("click", e=>{
 	changeColor.style.backgroundColor = 'rgb(40, 0, 0)';
 	chrome.tabs.query({active: true, currentWindow: true}).then(resp=>{
@@ -288,7 +447,13 @@ changeColor.addEventListener("click", e=>{
 		//console.log(tabId['id']);
 		console.log(document.querySelectorAll("span").length);
 		//let x = -1;
-		let urlThing = "http://34.97.97.204/Setting-The-Tone/tester.php?";
+		let urlThing = ""
+		if(document.getElementById('tone').value=="pos"){
+			urlThing = "http://34.97.97.204/Setting-The-Tone/NegNeuPosTester.php?";
+		}
+		else{
+			urlThing = "http://34.97.97.204/Setting-The-Tone/tester.php?";
+		}
 		for(i=0; i<document.querySelectorAll("span").length; i++){
 			console.log(i, document.querySelectorAll("span").length);
 			//divType=2;
@@ -313,26 +478,47 @@ changeColor.addEventListener("click", e=>{
 		}
 		console.log(urlThing);
 		if(haveFetched==false){
-			fetch(urlThing).then(resp=>resp.text())
-			.then(data=>{
-				console.log(data);
-				console.log(data.slice(-document.querySelectorAll("span").length));
-				haveFetched=true;
-				booleanValues = data.slice(-document.querySelectorAll("span").length);
-				for(count=0; count<document.querySelectorAll("span").length; count++){
-					let postIsSarcastic = true;
-					if(booleanValues.charAt(count)=="0"){
-						postIsSarcastic = false;
+			if(document.getElementById('tone').value=="pos"){
+				fetch(urlThing).then(resp=>resp.text())
+				.then(data=>{
+					console.log(data);
+					console.log(data.slice(-document.querySelectorAll("span").length));
+					haveFetched=true;
+					booleanValues = data.slice(-document.querySelectorAll("span").length);
+					for(count=0; count<document.querySelectorAll("span").length; count++){
+						let postTone = booleanValues.charAt(count);
+						chrome.scripting.executeScript(
+							{
+								target: {tabId: tabId['id']},
+								func: checkPos,
+								args: [postTone, count],
+							},
+							() => {});
 					}
-					chrome.scripting.executeScript(
-						{
-							target: {tabId: tabId['id']},
-							func: checkSarcasm,
-							args: [postIsSarcastic, count],
-						},
-						() => {});
-				}
-			})
+				})
+			}
+			else{
+				fetch(urlThing).then(resp=>resp.text())
+				.then(data=>{
+					console.log(data);
+					console.log(data.slice(-document.querySelectorAll("span").length));
+					haveFetched=true;
+					booleanValues = data.slice(-document.querySelectorAll("span").length);
+					for(count=0; count<document.querySelectorAll("span").length; count++){
+						let postIsSarcastic = true;
+						if(booleanValues.charAt(count)=="0"){
+							postIsSarcastic = false;
+						}
+						chrome.scripting.executeScript(
+							{
+								target: {tabId: tabId['id']},
+								func: checkSarcasm,
+								args: [postIsSarcastic, count],
+							},
+							() => {});
+					}
+				})
+			}
 		}
 		else{
 			chrome.scripting.executeScript(
