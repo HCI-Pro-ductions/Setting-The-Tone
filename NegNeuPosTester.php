@@ -3,7 +3,7 @@
     $queries = array();
     parse_str($_SERVER['QUERY_STRING'], $queries);
     $strQueries = "\"" . implode("\" \"", $queries) . "\"";
-    $result = system("py ai/detector.py " . $strQueries);
+    $result = system("py ai/detectorNegNeuPos.py " . $strQueries);
     ?>
 </h1>
 <?php
