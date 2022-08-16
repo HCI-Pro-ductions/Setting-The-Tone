@@ -63,7 +63,7 @@ model.compile(loss='binary_crossentropy',optimizer='adam',metrics=['accuracy'])
 model.summary()
 
 
-num_epochs = 30
+num_epochs = 10
 #graphing and monitoring the training progress, usually not needed unless debugging
 
 history = model.fit(training_padded, training_labels, epochs=num_epochs, validation_data=(testing_padded, testing_labels), verbose=2)
@@ -100,8 +100,8 @@ print(weights.shape) # shape: (vocab_size, embedding_dim)
 
 import io
 
-out_v = io.open('ai/saved_training/vecs.tsv', 'w', encoding='utf-8')
-out_m = io.open('ai/saved_training/meta.tsv', 'w', encoding='utf-8')
+out_v = io.open('ai/saved_training/sarcasm/vecs.tsv', 'w', encoding='utf-8')
+out_m = io.open('ai/saved_training/sarcasm/meta.tsv', 'w', encoding='utf-8')
 for word_num in range(1, vocab_size):
   word = reverse_word_index[word_num]
   embeddings = weights[word_num]
@@ -117,7 +117,7 @@ print(model.predict(padded))
 
 
 #save the model and tokenizer
-model.save('ai/saved_training/model')
+model.save('ai/saved_training/sarcasm/model')
 import pickle
-with open('ai/saved_training/tokenizer.pickle', 'wb') as handle:
+with open('ai/saved_training/sarcasm/tokenizer.pickle', 'wb') as handle:
     pickle.dump(tokenizer, handle, protocol=pickle.HIGHEST_PROTOCOL)

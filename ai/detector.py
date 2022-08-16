@@ -9,10 +9,10 @@ padding_type='post'
 oov_tok = "<OOV>"
 vocab_size = 20000
 
-model = tf.keras.models.load_model('ai/saved_training/model')
+model = tf.keras.models.load_model('ai/saved_training/sarcasm/model')
 #print(model.summary())
 import pickle
-with open('ai/saved_training/tokenizer.pickle', 'rb') as handle:
+with open('ai/saved_training/sarcasm/tokenizer.pickle', 'rb') as handle:
     tokenizer = pickle.load(handle)
 
 #read in the sentences
