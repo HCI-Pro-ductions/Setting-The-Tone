@@ -454,6 +454,7 @@ changeColor.addEventListener("click", e=>{
 		else{
 			urlThing = "http://34.97.97.204/Setting-The-Tone/tester.php?";
 		}
+		let lengthFix = 0;
 		for(i=0; i<document.querySelectorAll("span").length; i++){
 			console.log(i, document.querySelectorAll("span").length);
 			//divType=2;
@@ -469,11 +470,18 @@ changeColor.addEventListener("click", e=>{
 			if(document.querySelectorAll("span")[i].innerText.includes("#")){
 				document.querySelectorAll("span")[i].innerText=document.querySelectorAll("span")[i].innerText.replace(/#/g, ' ');
 			}
-			if(i==0){
-				urlThing += "sentence" + i.toString() + "=" + document.querySelectorAll("span")[i].innerText;
+			let temp = urlThing + "&amp;sentence" + i.toString() + "=" + document.querySelectorAll("span")[i].innerText;
+			if(temp.length < 4750){
+				if(i==0){
+					urlThing += "sentence" + i.toString() + "=" + document.querySelectorAll("span")[i].innerText;
+				}
+				else{
+					urlThing += "&amp;sentence" + i.toString() + "=" + document.querySelectorAll("span")[i].innerText;
+				}
 			}
 			else{
-				urlThing += "&amp;sentence" + i.toString() + "=" + document.querySelectorAll("span")[i].innerText;
+				lengthFix = i;
+				break
 			}
 		}
 		console.log(urlThing);
