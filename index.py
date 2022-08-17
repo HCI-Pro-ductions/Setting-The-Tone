@@ -36,27 +36,25 @@ app = Flask(__name__)
 
 @jsf.use(app)
 class App:
-    def __init__(self):
-        self.arr=[]
-        for i in js.document.querySelectorAll("span"){ #i=0;i<(document.querySelectorAll("span")).length;i++
-            arr.append(document.querySelectorAll("span")[i].textContent)
-        }
+    def __init__(self,arr):
+       # for i in self.js.document.querySelectorAll("span"):
+        self.arr=list(self.js.document.querySelectorAll("span"))
+
+        
     
     def check(self):
-        for(i=0;i<len(self.arr);i++){
-            sentence = [self.arr[i]]
+        for i in range(len(self.arr)):
+            sentence = self.arr[i]
             sequences = tokenizer.texts_to_sequences(sentence)
             padded = pad_sequences(sequences, maxlen=max_length, padding=padding_type, truncating=trunc_type)
             answer = model.predict(padded)
             #print("Value = ", answer)
-            if answer > 0.1:
+            if answer > 0.2:
                 #print("Hence, it is sarastic /s")
-                document.querySelectorAll("span")[i].textContent+=" 1" #if sarcastic
+                self.js.document.querySelectorAll("span")[i].textContent+=" 1" #if sarcastic
             else:
                 #print("Hence, it is *not* sarastic, no /s")
-                document.querySelectorAll("span")[i].textContent+=" 0"
-        }
-}
+                self.js.document.querySelectorAll("span")[i].textContent+=" 0"
 
 @app.route('/')
 def index():
@@ -81,6 +79,10 @@ else:
 for(i=0;i<(document.querySelectorAll("span")).length;i++){
     console.log(document.querySelectorAll("span")[i].textContent.slice(0,-2));
 }
+
+let arr=[];
+for(let i=0;i<document.querySelectorAll("span").length;arr.push(document.querySelectorAll("span")[i++].textContent));
+console.log(arr)
 
 https://pypi.org/project/jyserver/
 https://www.tutorialspoint.com/flask/flask_quick_guide.htm
