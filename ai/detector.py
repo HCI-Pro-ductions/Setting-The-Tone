@@ -7,7 +7,6 @@ max_length = 200
 trunc_type='post'
 padding_type='post'
 oov_tok = "<OOV>"
-vocab_size = 20000
 
 model = tf.keras.models.load_model('ai/saved_training/sarcasm/model')
 #print(model.summary())

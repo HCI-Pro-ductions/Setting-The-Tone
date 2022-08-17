@@ -7,7 +7,6 @@ max_length = 100
 trunc_type='post'
 padding_type='post'
 oov_tok = "<OOV>"
-vocab_size = 20000
 
 modelNegNeu = tf.keras.models.load_model('ai/saved_training/positive-negative/neg0neu1/model')
 modelNegPos = tf.keras.models.load_model('ai/saved_training/positive-negative/neg0pos1/model')
@@ -40,16 +39,16 @@ paddedNeuPos = pad_sequences(sequencesNeuPos, maxlen=max_length, padding=padding
 answerNeuPos = modelNeuPos.predict(paddedNeuPos)
 
 for i in range(len(sentences)):
-    if answerNegNeu[i] > 0.3 and answerNeuPos[i] < 0.3: #if not pos or neg, its neu
+    if answerNegNeu[i] > 0.25 and answerNeuPos[i] < 0.25: #if not pos or neg, its neu
         print(1, end="")
-    elif answerNegNeu[i] < 0.3 and answerNeuPos[i] < 0.3: #only neg
+    elif answerNegNeu[i] < 0.25 and answerNeuPos[i] < 0.25: #only neg
         print(0, end="")
-    elif answerNegNeu[i] > 0.3 and answerNeuPos[i] > 0.3: #only pos
+    elif answerNegNeu[i] > 0.25 and answerNeuPos[i] > 0.25: #only pos
         print(2, end="")
-    elif answerNegNeu[i] < 0.3 and answerNeuPos[i] > 0.3: #if both pos and neg, check with pos vs neg
-        if answerNegPos[i] < 0.3: #neg
+    elif answerNegNeu[i] < 0.25 and answerNeuPos[i] > 0.25: #if both pos and neg, check with pos vs neg
+        if answerNegPos[i] < 0.25: #neg
             print(0, end="")
-        elif answerNegPos[i] > 0.7: #pos
+        elif answerNegPos[i] > 0.75: #pos
             print(2, end="")
         else: #neu
             print(1, end="")
