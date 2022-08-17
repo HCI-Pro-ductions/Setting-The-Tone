@@ -53,8 +53,10 @@ function getText(){
 	catch{
 		console.log("Nope");
 	}
+	/*
 	try{
-		let arr5 = Array.from(document.querySelectorAll("h1._eYtD2XCVieq6emjKBH3m")[2]);
+		console.log("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
+		let arr5 = Array.from(document.querySelector("h1._eYtD2XCVieq6emjKBH3m"));
 		const newArr5 = arr5.map(e=>{
 			return e.innerText;
 		})
@@ -63,6 +65,8 @@ function getText(){
 	catch{
 		console.log("Nope");
 	}
+	*/
+	/*
 	try{
 		let arr6 = Array.from(document.querySelectorAll("h3._eYtD2XCVieq6emjKBH3m"));
 		const newArr6 = arr6.map(e=>{
@@ -73,6 +77,7 @@ function getText(){
 	catch{
 		console.log("Nope");
 	}
+	*/
 	try{
 		let arr7 = Array.from(document.querySelectorAll("p._1qeIAgB0cPwnLhDF9XSiJM"));
 		const newArr7 = arr7.map(e=>{
@@ -129,18 +134,20 @@ function toggleSarcasm(){
 		console.log(document.querySelectorAll("div.css-901oao.r-18jsvk2.r-37j5jr.r-a023e6.r-16dba41.r-rjixqe.r-bcqeeo.r-bnwqim.r-qvutc0")[i].textContent);
 		document.querySelectorAll("div.css-901oao.r-18jsvk2.r-37j5jr.r-a023e6.r-16dba41.r-rjixqe.r-bcqeeo.r-bnwqim.r-qvutc0").lastElementChild.classList.toggle('invis');
 	}
-
+	/*
 	try{
-		document.querySelectorAll("h1._eYtD2XCVieq6emjKBH3m")[2].lastElementChild.classList.toggle('invis');
+		document.querySelector("h1._eYtD2XCVieq6emjKBH3m").lastElementChild.classList.toggle('invis');
 	}
 	catch{
 		console.log("Not on reddit");
 	}
-
+	*/
+	/*
 	for(let i=0;i<document.querySelectorAll("h3._eYtD2XCVieq6emjKBH3m").length;i++){
 		console.log(document.querySelectorAll("h3._eYtD2XCVieq6emjKBH3m")[i].textContent);
 		document.querySelectorAll("h3._eYtD2XCVieq6emjKBH3m").lastElementChild.classList.toggle('invis');
 	}
+	*/
 }
 function checkSarcasm(postIsSarcastic, i){
 	//adds /s to post/comment (i think) if not already present, else toggles whether the /s displays for the sarcastic posts/comments
@@ -212,22 +219,24 @@ function checkSarcasm(postIsSarcastic, i){
 	catch{
 		console.log("not this 4");
 	}
-	
+	/*
 	try{
-		console.log(document.querySelectorAll("h1._eYtD2XCVieq6emjKBH3m")[2].textContent);
-		if(document.querySelectorAll("h1._eYtD2XCVieq6emjKBH3m")[i].innerHTML.slice(-12)!="</indicator>"){
+		console.log(document.querySelector("h1._eYtD2XCVieq6emjKBH3m").textContent);
+		if(document.querySelector("h1._eYtD2XCVieq6emjKBH3m").innerHTML.slice(-12)!="</indicator>"){
 			if(postIsSarcastic){
-				document.querySelectorAll("h1._eYtD2XCVieq6emjKBH3m")[2].innerHTML+="<indicator> /s</indicator>";
+				document.querySelector("h1._eYtD2XCVieq6emjKBH3m").innerHTML+="<indicator> /s</indicator>";
 			}
 			else{ 
-				document.querySelectorAll("h1._eYtD2XCVieq6emjKBH3m")[2].innerHTML+="<indicator> /srs</indicator>";
+				document.querySelector("h1._eYtD2XCVieq6emjKBH3m").innerHTML+="<indicator> /srs</indicator>";
 			}
 		}
 	}
 	catch{
 		console.log("not this 5");
 	}
-	
+	*/
+
+	/*
 	try{
 		console.log(document.querySelectorAll("h3._eYtD2XCVieq6emjKBH3m")[i].textContent);
 		if(document.querySelectorAll("h3._eYtD2XCVieq6emjKBH3m")[i].innerHTML.slice(-12)!="</indicator>"){
@@ -242,7 +251,7 @@ function checkSarcasm(postIsSarcastic, i){
 	catch{
 		console.log("not this 6");
 	}
-
+	*/
 	try{
 		console.log(document.querySelectorAll("p._1qeIAgB0cPwnLhDF9XSiJM")[i].textContent)
 		if(document.querySelectorAll("p._1qeIAgB0cPwnLhDF9XSiJM")[i].innerHTML.slice(-12)!="</indicator>"){
@@ -364,24 +373,27 @@ function checkPos(tones, i){
 		console.log("not this 4");
 	}
 	
+	/*
 	try{
-		console.log(document.querySelectorAll("h1._eYtD2XCVieq6emjKBH3m")[2].textContent);
-		if(document.querySelectorAll("h1._eYtD2XCVieq6emjKBH3m")[i].innerHTML.slice(-12)!="</indicator>"){
+		console.log(document.querySelector("h1._eYtD2XCVieq6emjKBH3m").textContent);
+		if(document.querySelector("h1._eYtD2XCVieq6emjKBH3m").innerHTML.slice(-12)!="</indicator>"){
 			if(tones==0){
-				document.querySelectorAll("h1._eYtD2XCVieq6emjKBH3m")[2].innerHTML+="<indicator> /neg</indicator>";
+				document.querySelector("h1._eYtD2XCVieq6emjKBH3m").innerHTML+="<indicator> /neg</indicator>";
 			}
 			else if(tones==1){
-				document.querySelectorAll("h1._eYtD2XCVieq6emjKBH3m")[2].innerHTML+="<indicator> /neu</indicator>";
+				document.querySelector("h1._eYtD2XCVieq6emjKBH3m").innerHTML+="<indicator> /neu</indicator>";
 			}
 			else{ 
-				document.querySelectorAll("h1._eYtD2XCVieq6emjKBH3m")[2].innerHTML+="<indicator> /pos</indicator>";
+				document.querySelector("h1._eYtD2XCVieq6emjKBH3m").innerHTML+="<indicator> /pos</indicator>";
 			}
 		}
 	}
 	catch{
 		console.log("not this 5");
 	}
-	
+	*/
+
+	/*
 	try{
 		console.log(document.querySelectorAll("h3._eYtD2XCVieq6emjKBH3m")[i].textContent);
 		if(document.querySelectorAll("h3._eYtD2XCVieq6emjKBH3m")[i].innerHTML.slice(-12)!="</indicator>"){
@@ -399,7 +411,7 @@ function checkPos(tones, i){
 	catch{
 		console.log("not this 6");
 	}
-
+	*/
 	try{
 		console.log(document.querySelectorAll("p._1qeIAgB0cPwnLhDF9XSiJM")[i].textContent)
 		if(document.querySelectorAll("p._1qeIAgB0cPwnLhDF9XSiJM")[i].innerHTML.slice(-12)!="</indicator>"){
@@ -485,6 +497,15 @@ changeColor.addEventListener("click", e=>{
 			}
 		}
 		console.log(urlThing);
+		
+		if(lengthFix > 0){
+			var element = document.getElementsByTagName("span"), index;
+
+			for (index = element.length - 1; index >= lengthFix; index--) {
+				element[index].parentNode.removeChild(element[index]);
+			}
+		}
+
 		if(haveFetched==false){
 			if(document.getElementById('tone').value=="pos"){
 				fetch(urlThing).then(resp=>resp.text())
