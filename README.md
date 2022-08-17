@@ -8,4 +8,4 @@ http://34.97.97.204/Setting-The-Tone/NegNeuPosTester.php?sentence=test (/neg /ne
 
 For tone detection with a simple UI: http://34.97.97.204/Setting-The-Tone/test.php
 
-One of the training dataset was too huge for GitHub, so find it here instead: https://files.monster-melancholy.me/pw/
+One of the training dataset was too huge for GitHub, so find it here instead: http://34.97.97.204/Setting-The-Tone/ai/datasets
