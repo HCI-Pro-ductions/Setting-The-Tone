@@ -461,10 +461,10 @@ changeColor.addEventListener("click", e=>{
 		//let x = -1;
 		let urlThing = ""
 		if(document.getElementById('tone').value=="pos"){
-			urlThing = "http://34.97.97.204/Setting-The-Tone/NegNeuPosTester.php?";
+			urlThing = "http://34.97.244.121/Setting-The-Tone/NegNeuPosTester.php?";
 		}
 		else{
-			urlThing = "http://34.97.97.204/Setting-The-Tone/tester.php?";
+			urlThing = "http://34.97.244.121/Setting-The-Tone/tester.php?";
 		}
 		let lengthFix = 0;
 		for(i=0; i<document.querySelectorAll("span").length; i++){
@@ -612,7 +612,7 @@ function toggleSarcasm(){
 			document.querySelectorAll("div._ab8x._ab94._ab99._ab9f._ab9m._ab9o")[i].children[2].innerHTML+="<indicator class='invis'> /s</indicator>";
 		}
 		
-		urlThing="http://34.97.97.204/Setting-The-Tone/tester.php?sentence=" + document.querySelectorAll("div._ab8x._ab94._ab99._ab9f._ab9m._ab9o")[i].children[2].innerText;
+		urlThing="http://34.97.244.121/Setting-The-Tone/tester.php?sentence=" + document.querySelectorAll("div._ab8x._ab94._ab99._ab9f._ab9m._ab9o")[i].children[2].innerText;
 		console.log(urlThing);
 		fetch(urlThing).then(resp=>resp.text())
 		.then(data=>{
@@ -636,7 +636,7 @@ function toggleSarcasm(){
 			document.querySelectorAll("div._a9zs")[i].children[0].innerHTML+="<indicator class='invis'> /s</indicator>";
 		}
 		
-		urlThing="http://34.97.97.204/Setting-The-Tone/tester.php?sentence=" + document.querySelectorAll("div._a9zs")[i].children[0].innerText;
+		urlThing="http://34.97.244.121/Setting-The-Tone/tester.php?sentence=" + document.querySelectorAll("div._a9zs")[i].children[0].innerText;
 		console.log(urlThing);
 		fetch(urlThing).then(resp=>resp.text())
 		.then(data=>{
